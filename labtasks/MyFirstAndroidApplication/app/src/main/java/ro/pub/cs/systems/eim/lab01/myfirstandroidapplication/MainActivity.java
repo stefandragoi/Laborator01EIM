@@ -3,13 +3,14 @@ package ro.pub.cs.systems.eim.lab01.myfirstandroidapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    final private static long TRANSPARENCY_EFFECT_DURATION = 5000;
+    final private static long TRANSPARENCY_EFFECT_DURATION = 1000;
 
     private ButtonClickListener buttonClickListener = new ButtonClickListener();
 
@@ -22,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
             greetingTextView.setAlpha(1);
 
             // TODO: exercise 9a
-
+            greetingTextView.setText(greetingTextView.getText().toString().replace("xxx", "\n"+userNameEditText.getText()));
             // TODO: exercise 9b
+            AlphaAnimation fadeEffect = new AlphaAnimation(1.0f, 0.0f);
+            fadeEffect.setDuration(TRANSPARENCY_EFFECT_DURATION);
+            fadeEffect.setFillAfter(true);
+            greetingTextView.setAnimation(fadeEffect);
         }
 
     }
